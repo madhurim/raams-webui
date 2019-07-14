@@ -1,22 +1,33 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ RuleName }}</h1>
     <p>
      Welcome, to the new age AI bused Rule editor and interpretor.
      You can type up a business rule in common English language and the rules behind the scenes
      will get interpreted in machine language, stored and executed as needed.
     </p>
-   
+     <div>{{ RuleExpression }}</div>
   </div>
+ 
 </template>
 
+
 <script>
+import axios from 'axios';
 export default {
-  name: 'HelloWorld',
+  name: 'Rule',
   props: {
-    msg: String
+    RuleExpression: String
+  },
+   data() {
+    return {};
+  },
+  mounted() {
+    axios.get("https://jsonplaceholder.typicode.com/todos/")
   }
 }
+
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
