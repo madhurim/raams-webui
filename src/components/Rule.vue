@@ -1,12 +1,23 @@
 <template>
   <div class="hello">
-    <h1>{{ RuleName }}</h1>
+    <h1>{{ RuleExpression }}</h1>
     <p>
-     Welcome, to the new age AI bused Rule editor and interpretor.
+     Welcome, to the new age AI based Rule editor and interpretor.
      You can type up a business rule in common English language and the rules behind the scenes
      will get interpreted in machine language, stored and executed as needed.
     </p>
-     <div>{{ RuleExpression }}</div>
+     <div class="row">
+          <div v-for="rule in rules" :key="rule.RuleId">
+          <div class="col-md-4 cards">
+             
+            <div>
+              <h3>{{ rule.RuleId }}</h3>
+              <p>{{ rule.RuleName }}</p>
+              <p>{{ rule.RuleStatement }}</p>
+            </div>
+          </div>
+        </div>
+        </div>
   </div>
  
 </template>
@@ -20,10 +31,20 @@ export default {
     RuleExpression: String
   },
    data() {
-    return {};
+    return { rules: [],
+      loading: false};
+    
   },
   mounted() {
-    axios.get("https://jsonplaceholder.typicode.com/todos/")
+     
+    axios.get("https://localhost:44325/api/rules")
+    .then(
+        
+        response => {this.loading = false;this.rules = response.data;  alert(response.data); }
+       
+    )
+    .catch(error => console.log(error))
+    
   }
 }
 
@@ -46,4 +67,20 @@ li {
 a {
   color: #42b983;
 }
+.cards {
+  background: #F5F5F5;
+  height:400px;
+}
+ .cards:hover {
+  transform: translateY(-0.5em);
+  background: #EBEBEB;
+}
+
+
+.cards {
+   column-count: 1;
+  column-gap: 1em;
+    margin-top: 70px;
+
+} 
 </style>

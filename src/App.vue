@@ -1,18 +1,19 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to the RaaMS Rules Editor"/>
+    <Rule RuleExpression="This is the Rule Expression"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+//import HelloWorld from './components/HelloWorld.vue'
+import Rule from './components/Rule.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    //HelloWorld,
+    Rule
   }
 }
 
