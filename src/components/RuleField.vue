@@ -1,23 +1,12 @@
 <template>
+
   <div class="hello">
-    <h1>{{ RuleExpression }}</h1>
+    <h1>{{ RuleName }}</h1>
     <p>
-     Welcome, to the new age AI based Rule editor and interpretor.
-     You can type up a business rule in common English language and the rules behind the scenes
-     will get interpreted in machine language, stored and executed as needed.
+     In this component, we will submit some rule fields
     </p>
      <div class="row">
-          <div v-for="rule in rules" :key="rule.ruleId">
-          <div >
-             
-            <div>
-              <h3>{{ rule.ruleId }}</h3>
-              <p>{{ rule.ruleName }}</p>
-              <p>{{ rule.ruleStatement }}</p>
-            </div>
-          </div>
-        </div>
-        </div>
+     </div>
   </div>
  
 </template>
@@ -26,25 +15,25 @@
 <script>
 import axios from 'axios';
 export default {
-  name: 'Rule',
+  name: 'RuleField',
   props: {
-    RuleExpression: String
+    RuleName: String
   },
    data() {
-    return { rules: [],
+    return { rulesfields: [],
       loading: false};
     
   },
   mounted() {
      
-    axios.get("https://localhost:44325/api/rules")
+  /*  axios.get("https://localhost:44325/api/rules")
     .then(
         
         response => {this.loading = false;this.rules = response.data;  
         console.log('response.data', response.data); }
        
     )
-    .catch(error => console.log(error))
+    .catch(error => console.log(error))*/
     
   }
 }
